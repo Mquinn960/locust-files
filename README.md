@@ -7,7 +7,7 @@ the Locust Test system.
 
 ### Dummy
 
-- /dummy/locustfile.py
+- ```/dummy/locustfile.py```
 
 This is the current dummy file used in demo setups. This file
 is the default file found in the Locust quick start and is
