@@ -22,9 +22,9 @@ class FoobarUser(HttpUser):
             chance = random.randint(1, 10)
 
             if chance == 3:
-                response.failure("Intermittent failure")
+                response.failure()
             else:
-                response.success("Success")
+                response.success()
 
     @task(1)
     def request_foo(self):
