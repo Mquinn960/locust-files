@@ -27,7 +27,7 @@ class FoobarUser(HttpUser):
             response.success("Success")
 
     @task(1)
-    def request_bar(self):
+    def request_foo(self):
         wait_time = between(1, 2)
 
         endpoint = f'{self._get_request_base()}/foo'
