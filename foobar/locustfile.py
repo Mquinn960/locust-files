@@ -16,15 +16,17 @@ class FoobarUser(HttpUser):
     def request_bar(self):
         wait_time = between(1, 5)
 
-        response = self.client.get(f'{self._get_request_base()}/bar')
+        with self.client.get(f'{self._get_request_base()}/bar', catch_response=True) as response:
 
-        # Introduce random failure
-        chance = random.randint(1, 10)
+            if response.statusCode == 200:
 
-        if chance == 3:
-            response.failure("Intermittent failure")
-        else:
-            response.success("Success")
+                # Introduce random failure
+                chance = random.randint(1, 10)
+
+                if chance == 3:
+                    response.failure("Intermittent failure")
+                else:
+                    response.success("Success")
 
     @task(1)
     def request_foo(self):
