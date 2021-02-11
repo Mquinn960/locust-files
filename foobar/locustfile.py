@@ -40,4 +40,4 @@ class FoobarUser(HttpUser):
         self.client.get(f'{endpoint}?{query_param}={payload}', name=endpoint)
     
     def _get_request_base(self):
-        return f'/{api_base}/{api_ver}'
+        return f'/{self.api_base}/{self.api_ver}'
