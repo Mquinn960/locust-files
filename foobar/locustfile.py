@@ -10,7 +10,6 @@ class FoobarUser(HttpUser):
 
     api_ver = "v1"
     api_base = "api"
-    wait_time = between(1, 3)
 
     @task(2)
     def request_bar(self):
@@ -22,7 +21,7 @@ class FoobarUser(HttpUser):
             chance = random.randint(1, 10)
 
             if chance == 3:
-                response.failure("Intermittent failure")
+                response.failure("Dummy intermittent failure")
             else:
                 response.success()
 
@@ -35,7 +34,7 @@ class FoobarUser(HttpUser):
         query_param = "query"
         payload = "foobar"
 
-        self.client.get(f'{endpoint}?{query_param}={payload}', name=endpoint)
+        self.client.get(f'{endpoint}?{query_param}={payload}')
     
     def _get_request_base(self):
         return f'/{self.api_base}/{self.api_ver}'
