@@ -22,7 +22,7 @@ class FoobarUser(HttpUser):
             chance = random.randint(1, 10)
 
             if chance == 3:
-                response.failure()
+                response.failure("Intermittent failure")
             else:
                 response.success()
 
