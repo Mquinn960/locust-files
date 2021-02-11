@@ -12,7 +12,6 @@ class FoobarUser(HttpUser):
     api_base = "api"
     wait_time = between(1, 3)
 
-    @tag('bar')
     @task(2)
     def request_bar(self):
         wait_time = between(1, 5)
@@ -29,7 +28,6 @@ class FoobarUser(HttpUser):
                 else:
                     response.success("Success")
 
-    @tag('foo')
     @task(1)
     def request_bar(self):
         wait_time = between(1, 2)
